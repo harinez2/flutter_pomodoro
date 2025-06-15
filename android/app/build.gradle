@@ -1,5 +1,5 @@
 android {
-    namespace "com.example.flutter_application_1"
+    namespace "com.example.flutter_pomodoro"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -9,7 +9,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.flutter_application_1"
+        applicationId "com.example.flutter_pomodoro"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode 1
