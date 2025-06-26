@@ -50,139 +50,141 @@ class _TimerSettingsScreenState extends State<TimerSettingsScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          PomodoroTimer(
-            workDuration: workDuration * 60,
-            shortBreakDuration: breakDuration * 60,
-            longBreakDuration: breakDuration * 2 * 60,
-            pomodorosUntilLongBreak: pomodorosUntilLongBreak,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('作業時間'),
-                        const SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.remove),
-                              onPressed: () {
-                                if (workDuration > 5) {
-                                  setState(() {
-                                    workDuration -= 5;
-                                  });
-                                }
-                              },
-                            ),
-                            SizedBox(
-                              width: 60,
-                              child: TextField(
-                                textAlign: TextAlign.center,
-                                keyboardType: TextInputType.number,
-                                controller: TextEditingController(
-                                    text: workDuration.toString()),
-                                onChanged: (value) {
-                                  final newValue = int.tryParse(value);
-                                  if (newValue != null && newValue > 0) {
-                                    setState(() {
-                                      workDuration = newValue;
-                                    });
-                                  }
-                                },
-                                decoration: const InputDecoration(
-                                  suffixText: '分',
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 8),
-                                ),
-                              ),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.add),
-                              onPressed: () {
-                                setState(() {
-                                  workDuration += 5;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('休憩時間'),
-                        const SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.remove),
-                              onPressed: () {
-                                if (breakDuration > 1) {
-                                  setState(() {
-                                    breakDuration -= 1;
-                                  });
-                                }
-                              },
-                            ),
-                            SizedBox(
-                              width: 60,
-                              child: TextField(
-                                textAlign: TextAlign.center,
-                                keyboardType: TextInputType.number,
-                                controller: TextEditingController(
-                                    text: breakDuration.toString()),
-                                onChanged: (value) {
-                                  final newValue = int.tryParse(value);
-                                  if (newValue != null && newValue > 0) {
-                                    setState(() {
-                                      breakDuration = newValue;
-                                    });
-                                  }
-                                },
-                                decoration: const InputDecoration(
-                                  suffixText: '分',
-                                  contentPadding:
-                                      EdgeInsets.symmetric(horizontal: 8),
-                                ),
-                              ),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.add),
-                              onPressed: () {
-                                setState(() {
-                                  breakDuration += 1;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+      body: SafeArea(
+        child: TabBarView(
+          controller: _tabController,
+          children: [
+            PomodoroTimer(
+              workDuration: workDuration * 60,
+              shortBreakDuration: breakDuration * 60,
+              longBreakDuration: breakDuration * 2 * 60,
+              pomodorosUntilLongBreak: pomodorosUntilLongBreak,
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('作業時間'),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.remove),
+                                onPressed: () {
+                                  if (workDuration > 5) {
+                                    setState(() {
+                                      workDuration -= 5;
+                                    });
+                                  }
+                                },
+                              ),
+                              SizedBox(
+                                width: 60,
+                                child: TextField(
+                                  textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.number,
+                                  controller: TextEditingController(
+                                      text: workDuration.toString()),
+                                  onChanged: (value) {
+                                    final newValue = int.tryParse(value);
+                                    if (newValue != null && newValue > 0) {
+                                      setState(() {
+                                        workDuration = newValue;
+                                      });
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                    suffixText: '分',
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    workDuration += 5;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('休憩時間'),
+                          const SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.remove),
+                                onPressed: () {
+                                  if (breakDuration > 1) {
+                                    setState(() {
+                                      breakDuration -= 1;
+                                    });
+                                  }
+                                },
+                              ),
+                              SizedBox(
+                                width: 60,
+                                child: TextField(
+                                  textAlign: TextAlign.center,
+                                  keyboardType: TextInputType.number,
+                                  controller: TextEditingController(
+                                      text: breakDuration.toString()),
+                                  onChanged: (value) {
+                                    final newValue = int.tryParse(value);
+                                    if (newValue != null && newValue > 0) {
+                                      setState(() {
+                                        breakDuration = newValue;
+                                      });
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                    suffixText: '分',
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 8),
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    breakDuration += 1;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: TabBar(
         controller: _tabController,
